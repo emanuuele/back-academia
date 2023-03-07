@@ -1,8 +1,8 @@
 const express = require('express')
 const server = express()
-server.listen(3001)
-let userRoute = require('userRoute')
+const router = require('./routes/client.js')
+server.use(router)
 
-server.get('/', ()=>{
-    console.log('aaa')
-})
+
+const port = 3000; //porta padrão
+server.listen(port, () => { console.log('eu estou executando')})
