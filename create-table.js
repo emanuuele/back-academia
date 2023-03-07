@@ -7,10 +7,10 @@ const connection = mysql.createConnection({
   database: "academia",
 });
 connection.connect((err) => {
-  if (err) return console.log(err)
-  createTableClients(connection)
+  if (err) return console.log(err);
+  createTableClients(connection);
   //passa connection (o objeto) como parametro na função createTable
-})
+});
 function createTableClients(conn) {
   const sql =
     "CREATE TABLE IF NOT EXISTS Clients(" +
@@ -20,31 +20,31 @@ function createTableClients(conn) {
     "altura double NOT NULL, " +
     "peso double NOT NULL, " +
     "nascimento varchar(10) NOT NULL, " +
-    "ultimoPagamento varchar(10) NOT NULL, " +
+    "ativo varchar(1), "+
     "PRIMARY KEY (id));";
   conn.query(sql, (error, results, fiels) => {
     if (error) return console.log(error);
     console.log("aaa");
   });
-
-  /* function createTablePagamentos(conn) {
-        const sql =
-          "CREATE TABLE IF NOT EXISTS `academia`.`pagamentos` (" +
-          "`idpagamentos` INT NOT NULL," +
-          "`valor` DOUBLE NOT NULL," +
-          "`ultimoPagamento` DATE NOT NULL," +
-          "`id_client` INT NOT NULL," +
-          "PRIMARY KEY (`idpagamentos`)," +
-          "INDEX `id_cliente_idx` (`id_client` ASC) VISIBLE," +
-          "CONSTRAINT `id_cliente`" +
-          "FOREIGN KEY (`id_client`)" +
-          "REFERENCES `academia`.`clients` (`id`)" +
-          "ON DELETE NO ACTION" +
-          "ON UPDATE NO ACTION);";
-          conn.query(sql, (error, results, fiels) => {
-              if (error) return console.log(error);
-              console.log("bbb");
-            });
-      } */
 }
-module.exports = createTableClients
+function createTablePagamentos(conn) {
+  const sql =
+    "CREATE TABLE IF NOT EXISTS pagamentos (" +
+    "`id` INT NOT NULL AUTO_INCREMENT," +
+    "`valor` DOUBLE NOT NULL," +
+    "`ultimoPagamento` varchar(10) NOT NULL," +
+    "`id_client` INT NOT NULL," +
+    "PRIMARY KEY (`id`)," +
+    "INDEX `id_cliente_idx` (`id_client` ASC) VISIBLE," +
+    "CONSTRAINT `id_cliente`" +
+    "FOREIGN KEY (`id_client`)" +
+    "REFERENCES `clients` (`id`)" +
+    "ON DELETE NO ACTION " +
+    "ON UPDATE NO ACTION);";
+  conn.query(sql, (error, results, fiels) => {
+    if (error) return console.log(error);
+    console.log("tabela pagamentos criada");
+  });
+}
+
+module.exports = { createTableClients, createTablePagamentos };
