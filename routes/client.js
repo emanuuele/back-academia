@@ -5,18 +5,21 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/clients", (req, res) => {
-  execSQLQuery(`SELECT * FROM Clients where ativo is null or ativo = 'S'`, res);
+  execSQLQuery(`SELECT id, nome, altura, peso, idade, nascimento, DATE_FORMAT(STR_TO_DATE(ultimoPagamento, '%Y-%m-%d'), '%d/%m/%Y') as ultimoPagamento FROM Clients where ativo is null or ativo = 'S'`, res);
 });
 
 router.post("/clients", (req, res) => {
   const {
-    clientData: { nome, idade, peso, altura, nascimento },
+    clientData: { nome, idade, peso, altura, nascimento, ultimoPagamento },
   } = req.body;
   execSQLQuery(
-    `INSERT INTO Clients(nome, idade, altura, peso, nascimento) VALUES ('${nome}', '${idade}', '${altura}', '${peso}', '${nascimento}')`,
+    `INSERT INTO Clients(nome, idade, altura, peso, nascimento, ultimoPagamento) VALUES ('${nome}', ${idade}, ${altura}, ${peso}, '${nascimento}', '${ultimoPagamento}');`,
     res
   );
 });
+router.get('/clients/:param?', (req,res)=>{
+  execSQLQuery(`SELECT * FROM Clients where nome like '%${req.params.param}%' or id like '%${req.params.param}%'`, res)
+})
 
 router.put("/clients/:id?", (req, res) => {
   const id = parseInt(req.params.id);
@@ -27,7 +30,7 @@ router.put("/clients/:id?", (req, res) => {
   console.log( `UPDATE Clients SET nome ="${nome}", idade=${idade}, altura=${altura}, peso=${peso}, nascimento="${nascimento}" WHERE id = ${id}`)
 
   execSQLQuery(
-    `UPDATE Clients SET nome ="${nome}", idade="${idade}", altura="${altura}", peso="${peso}", nascimento="${nascimento}" WHERE id = ${id}`,
+    `UPDATE Clients SET nome ="${nome}", idade=${idade}, altura=${altura}, peso=${peso}, nascimento="${nascimento}" WHERE id = ${id}`,
     res
   );
 });
