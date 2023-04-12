@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/clients", (req, res) => {
-  execSQLQuery(`SELECT id, nome, altura, peso, idade, nascimento, DATE_FORMAT(STR_TO_DATE(ultimoPagamento, '%Y-%m-%d'), '%d/%m/%Y') as ultimoPagamento FROM Clients where ativo is null or ativo = 'S'`, res);
+  execSQLQuery(`SELECT id, nome, altura, peso, idade, DATE_FORMAT(STR_TO_DATE(nascimento, '%d/%m/%Y'), '%d-%m-%Y') as nascimento, DATE_FORMAT(STR_TO_DATE(ultimoPagamento, '%Y-%m-%d'), '%d-%m-%Y') as ultimoPagamento FROM Clients where ativo is null or ativo = 'S'`, res);
 });
 
 router.post("/clients", (req, res) => {
@@ -13,12 +13,13 @@ router.post("/clients", (req, res) => {
     clientData: { nome, idade, peso, altura, nascimento, ultimoPagamento },
   } = req.body;
   execSQLQuery(
-    `INSERT INTO Clients(nome, idade, altura, peso, nascimento, ultimoPagamento) VALUES ('${nome}', ${idade}, ${altura}, ${peso}, '${nascimento}', '${ultimoPagamento}');`,
+    `INSERT INTO Clients(nome, idade, altura, peso, nascimento, ultimoPagamento, ativo) VALUES ('${nome}', ${idade}, ${altura}, ${peso}, '${nascimento}', '${ultimoPagamento}', 'S');`,
     res
   );
 });
 router.get('/clients/:param?', (req,res)=>{
-  execSQLQuery(`SELECT * FROM Clients where nome like '%${req.params.param}%' or id like '%${req.params.param}%'`, res)
+  let param = req.params.param
+  execSQLQuery(`SELECT * FROM Clients where nome like '%${param}%' and ativo = 'S' or id like '%${param}%' and ativo = 'S'`, res)
 })
 
 router.put("/clients/:id?", (req, res) => {

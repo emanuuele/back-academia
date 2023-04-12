@@ -12,10 +12,9 @@ const connection = mysql.createConnection({
   multipleStatements: true,
 });
 connection.connect((err) => {
-  if (err) return console.log(error);
+  if (err) return console.log(err);
   createTableClients(connection);
   createTablePagamentos(connection);
-  //createTablePagamentos(connection)
 });
 
 function execSQLQuery(sqlQry, res) {
@@ -32,4 +31,4 @@ function execSQLQuery(sqlQry, res) {
   });
 }
 
-(module.exports = execSQLQuery), { connection };
+module.exports = execSQLQuery

@@ -33,5 +33,5 @@ server.use(function (req, res, next) {
 const port = 3000; //porta padrão
 
 server.listen(port, () => {
-  console.log("eu estou executando");
+  console.log("porta executada");
 });

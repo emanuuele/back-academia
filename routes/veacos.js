@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/veacos", (req, res) => {
   execSQLQuery(
-    `SELECT id, nome, altura, peso, idade, nascimento, DATE_FORMAT(STR_TO_DATE(ultimoPagamento, '%Y-%m-%d'), '%d/%m/%Y') as ultimoPagamento FROM Clients where CURDATE() > vencimento`,
+    `SELECT id, nome, altura, peso, idade, DATE_FORMAT(STR_TO_DATE(nascimento, '%d/%m/%Y'), '%d-%m-%Y') as nascimento, DATE_FORMAT(STR_TO_DATE(ultimoPagamento, '%Y-%m-%d'), '%d-%m-%Y') as ultimoPagamento FROM Clients where CURDATE() > vencimento`,
     res
   );
 });
