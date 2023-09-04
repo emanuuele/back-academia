@@ -16,7 +16,7 @@ const corsOptions = {
 
 server.use(cors(corsOptions));
 server.get("/", (req, res) => {
-  res.send("Bem-vindo à rota principal!");
+  res.json("Bem-vindo à rota principal!");
 });
 server.use(clientRouter);
 server.use(pagamentosRouter);
