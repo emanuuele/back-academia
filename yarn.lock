@@ -33,6 +33,11 @@ body-parser@1.20.1:
     type-is "~1.6.18"
     unpipe "1.0.0"
 
+brazilian-values@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/brazilian-values/-/brazilian-values-0.12.0.tgz#99a8d9c5ef115399a4bd057a31bc42afe321278f"
+  integrity sha512-OlB+fNhbmn/PEn9Cr5sZ480GiRtDA26dv0swrDB7BAdyaOHLBeA9cYBbhdgSAx57yA82xZyhmjkijggFt5K1Lw==
+
 bytes@3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/bytes/-/bytes-3.1.2.tgz#8b0beeb98605adf1b128fa4386403c009e0221a5"

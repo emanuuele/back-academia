@@ -1,16 +1,3 @@
-const mysql = require("mysql2");
-const connection = mysql.createConnection({
-  host: "localhost",
-  port: 3306,
-  user: "root",
-  password: "",
-  database: "academia",
-});
-connection.connect((err) => {
-  if (err) return console.log(err);
-  createTableClients(connection);
-  //passa connection (o objeto) como parametro na função createTable
-});
 function createTableClients(conn) {
   const sql =
     "CREATE TABLE IF NOT EXISTS Clients(" +
@@ -24,7 +11,6 @@ function createTableClients(conn) {
     "PRIMARY KEY (id));";
   conn.query(sql, (error, results, fiels) => {
     if (error) return console.log(error);
-    console.log("aaa");
   });
 }
 function createTablePagamentos(conn) {

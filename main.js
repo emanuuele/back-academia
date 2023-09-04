@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require('cors');
 const clientRouter = require("./routes/client.js");
 const pagamentosRouter = require("./routes/pagamentos.js");
+const veacosRouter = require("./routes/veacos.js");
 const bodyParser = require('body-parser')
 const server = express();
 server.use(bodyParser.json({ limit: 819200 }));
@@ -17,6 +18,7 @@ server.use(cors(corsOptions));
 
 server.use(clientRouter);
 server.use(pagamentosRouter);
+server.use(veacosRouter)
 
 server.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -31,5 +33,5 @@ server.use(function (req, res, next) {
 const port = 3000; //porta padrão
 
 server.listen(port, () => {
-  console.log("eu estou executando");
+  console.log("porta executada");
 });
