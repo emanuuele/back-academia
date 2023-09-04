@@ -9,7 +9,7 @@
     "redirects": [
         { 
             "source": "/",
-            "destination": "main.js"
+            "destination": "/routes/client"
         }
     ]
 }
