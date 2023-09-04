@@ -8,9 +8,8 @@
     ],
     "redirects": [
         { 
-            "source": "/", 
-            "destination": "/routes/client", 
-            "permanent": false 
+            "source": "/(.*)",
+            "destination": "main.js"
         }
     ]
 }
