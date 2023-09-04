@@ -9,7 +9,7 @@
     "redirects": [
         { 
             "source": "/", 
-            "destination": "/", 
+            "destination": "/routes/clients", 
             "permanent": false 
         }
     ]
