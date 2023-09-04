@@ -32,7 +32,7 @@ server.use(function (req, res, next) {
   next()
 });
 
-const port = 3000; //porta padrão
+const port = process.env.PORT || 3000; //porta padrão
 
 server.listen(port, () => {
   console.log("porta executada");
