@@ -4,9 +4,6 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json("hello world")
-});
 router.get("/clients", (req, res) => {
   execSQLQuery(`SELECT id, nome, altura, peso, idade, DATE_FORMAT(STR_TO_DATE(nascimento, '%d/%m/%Y'), '%d-%m-%Y') as nascimento, DATE_FORMAT(STR_TO_DATE(ultimoPagamento, '%Y-%m-%d'), '%d-%m-%Y') as ultimoPagamento FROM Clients where ativo is null or ativo = 'S'`, res);
 });
