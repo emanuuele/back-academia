@@ -1,4 +1,16 @@
 {
+  "name": "back-academia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "type": "module",
+  "engines": {
+    "node": "18.x"
+  },
+  "scripts": {
+    "start": "node main.js"
+    
+  },
   "dependencies": {
     "brazilian-values": "^0.12.0",
     "cors": "^2.8.5",
