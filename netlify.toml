@@ -1,4 +1,6 @@
-[[redirects]]
-from = "/"
-to = "/routes/client"
-status = 200
+[[[redirects]]]
+  from = "/clients"
+  to = "/routes/client.js"
+  status = 200
+  force = true
+  conditions = {Method = "GET"}
