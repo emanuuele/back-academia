@@ -1,4 +1,4 @@
-[[[redirects]]]
+[[redirects]]
   from = "/clients"
   to = "/routes/client.js"
   status = 200
