@@ -1,4 +1,4 @@
 [[redirects]]
 from = "/"
-to = "/main.js"
+to = "/routes/client"
 status = 200
