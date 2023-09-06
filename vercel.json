@@ -2,6 +2,11 @@
     "redirects": [
 
         { 
+            "source": "/", 
+            "destination": "/routes/client.js", 
+            "statusCode": 301 
+        },
+        { 
             "source": "/clients", 
             "destination": "/routes/client.js", 
             "statusCode": 301 
