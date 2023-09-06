@@ -1,6 +1,0 @@
-[[redirects]]
-  from = "/"
-  to = "/main.js"
-  status = 200
-  force = true
-  conditions = {Method = "GET"}
