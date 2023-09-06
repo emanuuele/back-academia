@@ -1,16 +1,4 @@
 {
-    "crons": [
-        {
-
-            "path": "/routes/client.js"
-        },
-        {
-            "path": "/routes/pagamentos.js"
-        },
-        {
-            "path": "/routes/veacos.js"
-        }
-    ],
     "redirects": [
 
         { 
