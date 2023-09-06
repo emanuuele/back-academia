@@ -1,6 +1,6 @@
 [[redirects]]
-  from = "/clients"
-  to = "/routes/client.js"
+  from = "/"
+  to = "/main.js"
   status = 200
   force = true
   conditions = {Method = "GET"}
