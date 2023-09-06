@@ -1,0 +1,33 @@
+{
+    "crons": [
+        {
+
+            "path": "/routes/client.js"
+        },
+        {
+            "path": "/routes/pagamentos.js"
+        },
+        {
+            "path": "/routes/veacos.js"
+        }
+    ],
+    "redirects": [
+
+        { 
+            "source": "/clients", 
+            "destination": "/routes/client.js", 
+            "statusCode": 301 
+        },
+        { 
+            "source": "/pagamentos", 
+            "destination": "/routes/pagamentos.js", 
+            "statusCode": 301 
+        },
+        { 
+            "source": "/veacos", 
+            "destination": "/routes/veacos.js", 
+            "statusCode": 301 
+        }
+    ]
+    
+}

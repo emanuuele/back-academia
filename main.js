@@ -15,9 +15,6 @@ const corsOptions = {
 };
 
 server.use(cors(corsOptions));
-server.get("/", (req, res) => {
-  res.json("Bem-vindo à rota principal!");
-});
 server.use(clientRouter);
 server.use(pagamentosRouter);
 server.use(veacosRouter)
