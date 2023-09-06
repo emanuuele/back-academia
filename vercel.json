@@ -1,26 +1,11 @@
 {
-    "redirects": [
-
-        { 
-            "source": "/", 
-            "destination": "/routes/client.js", 
-            "statusCode": 301 
-        },
-        { 
-            "source": "/clients", 
-            "destination": "/routes/client.js", 
-            "statusCode": 301 
-        },
-        { 
-            "source": "/pagamentos", 
-            "destination": "/routes/pagamentos.js", 
-            "statusCode": 301 
-        },
-        { 
-            "source": "/veacos", 
-            "destination": "/routes/veacos.js", 
-            "statusCode": 301 
-        }
+    "routes": [
+        { "src": "/clients", "dest": "/routes/client.js", "methods":["POST", "PUT", "DELETE"] },
+        { "src": "/clients", "dest": "/routes/client.js" },
+        { "src": "/pagamentos", "dest": "/routes/pagamentos.js", "methods":["POST", "PUT", "DELETE"] },
+        { "src": "/pagamentos", "dest": "/routes/pagamentos.js" },
+        { "src": "/veacos", "dest": "/routes/veacos.js" },
+        { "src": "/legacy", "status": 404 }
     ]
     
 }
