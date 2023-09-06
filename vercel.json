@@ -2,6 +2,7 @@
     "routes": [
         { "src": "/clients", "dest": "/routes/client.js", "methods":["POST", "PUT", "DELETE"] },
         { "src": "/clients", "dest": "/routes/client.js" },
+        { "src": "/clients/(?<id>[^/]*)", "dest": "/routes/client.js?id=$id" },
         { "src": "/", "dest": "/routes/client.js" },
         { "src": "/pagamentos", "dest": "/routes/pagamentos.js", "methods":["POST", "PUT", "DELETE"] },
         { "src": "/pagamentos", "dest": "/routes/pagamentos.js" },
