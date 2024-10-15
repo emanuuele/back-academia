@@ -5,7 +5,7 @@
         { "src": "/pagamentos", "dest": "/routes/pagamentos.js", "methods":["POST", "PUT", "DELETE"] },
         { "src": "/pagamentos", "dest": "/routes/pagamentos.js" },
         { "src": "/veacos", "dest": "/routes/veacos.js" },
-        { "src": "/", "dest": "/routes/client.js" },
+        { "src": "/", "dest": "/main.js" },
         { "src": "/legacy", "status": 404 }
     ]
 }
