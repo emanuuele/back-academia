@@ -4,11 +4,11 @@ const {
 } = require("./create-table.js");
 const mysql = require("mysql2");
 const connection = mysql.createConnection({
-  host: "localhost",
+  host: "db4free.net",
   port: 3306,
-  user: "root",
-  password: "",
-  database: "academia",
+  user: "ah_cademia",
+  password: "javajava",
+  database: "teste_academiaaa",
   multipleStatements: true,
 });
 connection.connect((err) => {
