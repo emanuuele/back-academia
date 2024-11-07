@@ -8,7 +8,7 @@ function addDays(date, days) {
   return date;
 }
 
-router.get("/pagamentos", (req, res) => {
+router.get("/", (req, res) => {
   execSQLQuery(
     `select pagamentos.id, clients.nome, Concat('R$ ', Replace (Replace (Replace (Format(valor, 2), '.', '|'), ',', '.'), '|', ',')) as valor,` + 
     `DATE_FORMAT(STR_TO_DATE(clients.ultimoPagamento, '%Y-%m-%d'), '%d/%m/%Y') as ultimoPagamento, ` +
@@ -17,7 +17,7 @@ router.get("/pagamentos", (req, res) => {
   );
 });
 
-router.post("/pagamentos", (req, res) => {
+router.post("/", (req, res) => {
   const {
     pagamento: { valor, id_cliente },
   } = req.body;
@@ -34,7 +34,7 @@ router.post("/pagamentos", (req, res) => {
     res
   );
 });
-/* router.post("/pagamentos", (req, res) => {
+/* router.post("/", (req, res) => {
   const {
     pagamento: { valor, ultimoPagamento, id_cliente },
   } = req.body;
@@ -53,7 +53,7 @@ router.post("/pagamentos", (req, res) => {
     res
   );
 });
-router.put("/pagamentos/:id?", (req, res) => {
+router.put("/:id?", (req, res) => {
   const id = req.params.id;
   execSQLQuery(
     `UPDATE Pagamentos SET valor='${pagamento.valor}', ultimoPagamento = '${pagamento.ultimoPagamento}', id_cliente='${pagamento.id_cliente}' WHERE ID = ${id}`,
