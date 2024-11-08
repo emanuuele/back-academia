@@ -29,8 +29,8 @@ router.post("/", (req, res) => {
   vencimentoString = vencimento.toISOString().slice(0, 10);
 
   execSQLQuery(
-    `INSERT INTO Pagamentos(valor, id_client) VALUES (${valor}, ${id_cliente});` +
-      `UPDATE Clients SET vencimento = '${vencimentoString}' where id= ${id_cliente};`,
+    `INSERT INTO pagamentos(valor, id_client) VALUES (${valor}, ${id_cliente});` +
+      `UPDATE clients SET vencimento = '${vencimentoString}' where id= ${id_cliente};`,
     res
   );
 });
