@@ -13,13 +13,13 @@ router.post("/", (req, res) => {
     clientData: { nome, idade, peso, altura, nascimento, ultimoPagamento },
   } = req.body;
   execSQLQuery(
-    `INSERT INTO Clients(nome, idade, altura, peso, nascimento, ultimoPagamento, ativo) VALUES ('${nome}', ${idade}, ${altura}, ${peso}, '${nascimento}', '${ultimoPagamento}', 'S');`,
+    `INSERT INTO clients(nome, idade, altura, peso, nascimento, ultimoPagamento, ativo) VALUES ('${nome}', ${idade}, ${altura}, ${peso}, '${nascimento}', '${ultimoPagamento}', 'S');`,
     res
   );
 });
 router.get('/:param?', (req,res)=>{
   let param = req.params.param
-  execSQLQuery(`SELECT * FROM Clients where nome like '%${param}%' and ativo = 'S' or id like '%${param}%' and ativo = 'S'`, res)
+  execSQLQuery(`SELECT * FROM clients where nome like '%${param}%' and ativo = 'S' or id like '%${param}%' and ativo = 'S'`, res)
 })
 
 router.put("/:id?", (req, res) => {
@@ -28,10 +28,10 @@ router.put("/:id?", (req, res) => {
     clientData: { nome, idade, peso, altura, nascimento },
   } = req.body;
 
-  console.log( `UPDATE Clients SET nome ="${nome}", idade=${idade}, altura=${altura}, peso=${peso}, nascimento="${nascimento}" WHERE id = ${id}`)
+  console.log( `UPDATE clients SET nome ="${nome}", idade=${idade}, altura=${altura}, peso=${peso}, nascimento="${nascimento}" WHERE id = ${id}`)
 
   execSQLQuery(
-    `UPDATE Clients SET nome ="${nome}", idade=${idade}, altura=${altura}, peso=${peso}, nascimento="${nascimento}" WHERE id = ${id}`,
+    `UPDATE clients SET nome ="${nome}", idade=${idade}, altura=${altura}, peso=${peso}, nascimento="${nascimento}" WHERE id = ${id}`,
     res
   );
 });
@@ -39,13 +39,13 @@ router.put("/:id?", (req, res) => {
 router.delete("/:id?", (req, res) => {
   const id = parseInt(req.params.id);
   const flag = "N";
-  execSQLQuery(`UPDATE Clients SET ativo="${flag}" WHERE ID = ${id}`, res);
+  execSQLQuery(`UPDATE clients SET ativo="${flag}" WHERE ID = ${id}`, res);
 });
 
 router.get("/:id?", (req, res, next) => {
   let filter = "";
   if (req.params.id) filter = " WHERE ID= " + parseInt(req.params.id);
-  execSQLQuery("SELECT * FROM Clients" + filter, res);
+  execSQLQuery("SELECT * FROM clients" + filter, res);
 });
 
 module.exports = router;
