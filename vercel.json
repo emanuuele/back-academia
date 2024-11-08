@@ -8,6 +8,7 @@
     ],
     "routes": [
         { "src": "/clients", "dest": "/routes/client.js" },
+        { "src": "/clients", "methods":["GET", "POST"], "dest": "/routes/client.js?id=$id" },
         { "src": "/clients/(?<id>[^/]*)", "methods":["GET", "POST", "PUT", "DELETE"], "dest": "/routes/client.js?id=$id" },
         { "src": "/pagamentos", "dest": "/routes/pagamentos.js", "methods":["POST", "PUT", "DELETE"] },
         { "src": "/pagamentos", "dest": "/routes/pagamentos.js" },
