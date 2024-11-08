@@ -6,9 +6,9 @@ const mysql = require("mysql2");
 const connection = mysql.createConnection({
   host: "db4free.net",
   port: 3306,
-  user: "ah_cademia",
+  user: "demisroot",
   password: "javajava",
-  database: "teste_academiaaa",
+  database: "academiaestagiog",
   multipleStatements: true,
 });
 connection.connect((err) => {
