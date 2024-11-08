@@ -13,8 +13,8 @@ const connection = mysql.createConnection({
 });
 connection.connect((err) => {
   if (err) return console.log(err);
-  createTableClients(connection);
-  createTablePagamentos(connection);
+  //createTableClients(connection);
+  //createTablePagamentos(connection);
 });
 
 function execSQLQuery(sqlQry, res) {
