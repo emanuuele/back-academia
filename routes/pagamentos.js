@@ -8,7 +8,7 @@ function addDays(date, days) {
   return date;
 }
 
-router.get("/", (req, res) => {
+router.get("/pagamentos", (req, res) => {
   execSQLQuery(
     `select pagamentos.id, clients.nome, Concat('R$ ', Replace (Replace (Replace (Format(valor, 2), '.', '|'), ',', '.'), '|', ',')) as valor,` + 
     `DATE_FORMAT(STR_TO_DATE(clients.ultimoPagamento, '%Y-%m-%d'), '%d/%m/%Y') as ultimoPagamento, ` +
@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
   );
 });
 
-router.post("/", (req, res) => {
+router.post("/pagamentos/", (req, res) => {
   const {
     pagamento: { valor, id_cliente },
   } = req.body;
