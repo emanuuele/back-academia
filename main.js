@@ -20,11 +20,7 @@ server.use(pagamentosRouter);
 server.use(veacosRouter)
 
 server.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, server_id, version"
-  );
+  res.header("Access-Control-Allow-Origin", "https://front-academia.vercel.app/");
 
   next()
 });
