@@ -10,27 +10,16 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 server.use(express.json())
 
-// const corsOptions = {
-//   origin: "https://front-academia.vercel.app", // Origem permitida
-//   methods: "GET,POST,PUT,DELETE,OPTIONS", // Métodos permitidos
-//   allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, server_id, version",
-//   exposedHeaders: "*",
-// };
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
 
-// server.use(cors(corsOptions));
+app.use(cors(corsOptions))
 server.use(clientRouter);
 server.use(pagamentosRouter);
 server.use(veacosRouter)
-
-server.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://front-academia.vercel.app");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, server_id, version"
-  );
-
-  next()
-});
 
 const port = process.env.PORT || 3000; //porta padrão
 
