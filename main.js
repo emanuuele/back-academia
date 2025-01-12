@@ -19,11 +19,6 @@ const corsOptions = {
 };
 
 server.use(cors(corsOptions));
-server.options("*", cors(corsOptions));
-server.use(clientRouter);
-server.use(pagamentosRouter);
-server.use(veacosRouter)
-
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Origin, X-Requested-With, Content-Type, Accept, app_id, version');
@@ -36,6 +31,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+server.use(clientRouter);
+server.use(pagamentosRouter);
+server.use(veacosRouter)
 
 const port = process.env.PORT || 3000; //porta padrão
 
