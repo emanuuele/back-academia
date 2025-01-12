@@ -10,28 +10,24 @@ server.use(bodyParser.urlencoded({ extended: true }));
 
 server.use(express.json())
 
-const corsOptions ={
-  origin:'*', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200,
-}
+const corsOptions = {
+	exposedHeaders: '*',
+};
 
-app.use(cors(corsOptions))
-
-app.use((req, res,  next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Origin, X-Requested-With, Content-Type, Accept, app_id, version')
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-
-  if (req.method === 'OPTIONS') {
-    res.header('Access-Control-Max-Age', 600)
-    return res.status(200).end()
-  }
-  next()
-})
+server.use(cors(corsOptions));
 server.use(clientRouter);
 server.use(pagamentosRouter);
 server.use(veacosRouter)
+
+server.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, server_id, version"
+  );
+
+  next()
+});
 
 const port = process.env.PORT || 3000; //porta padrão
 
