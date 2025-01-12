@@ -17,6 +17,18 @@ const corsOptions ={
 }
 
 app.use(cors(corsOptions))
+
+app.use((req, res,  next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Origin, X-Requested-With, Content-Type, Accept, app_id, version')
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Max-Age', 600)
+    return res.status(200).end()
+  }
+  next()
+})
 server.use(clientRouter);
 server.use(pagamentosRouter);
 server.use(veacosRouter)
